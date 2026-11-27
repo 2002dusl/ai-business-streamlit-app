@@ -398,6 +398,7 @@ def render_login():
             """,
             unsafe_allow_html=True,
         )
+        st.markdown('<div style="height:10px"></div>', unsafe_allow_html=True)
         password = st.text_input(
             "접속 비밀번호", type="password", label_visibility="collapsed", placeholder="접속 비밀번호"
         )
