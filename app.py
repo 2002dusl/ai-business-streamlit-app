@@ -376,35 +376,42 @@ def render_login():
     st.markdown(
         """
         <style>
-        .login-wrap { max-width: 420px; margin: 12vh auto 0 auto; }
-        .login-card { background: #FFFFFF; border: 1px solid #DDE5EC; border-radius: 10px; padding: 34px 32px 26px 32px; }
+        .login-card { background: #FFFFFF; border: 1px solid #DDE5EC; border-radius: 10px; padding: 30px 30px 26px 30px; }
         .login-kicker { font-size: 11px; letter-spacing: 1.6px; color: #1F8A70; font-weight: 700; }
         .login-title { font-size: 22px; font-weight: 700; color: #10243E; margin-top: 8px; }
-        .login-sub { font-size: 13px; color: #5C6B7A; margin-top: 6px; line-height: 1.6; }
+        .login-sub { font-size: 13px; color: #5C6B7A; margin-top: 8px; line-height: 1.65; }
+        .login-foot { text-align: center; font-size: 11.5px; color: #8FA0B0; margin-top: 18px; }
         </style>
         """,
         unsafe_allow_html=True,
     )
-    st.markdown('<div class="login-wrap">', unsafe_allow_html=True)
-    st.markdown(
-        """
-        <div class="login-card">
-          <div class="login-kicker">AI BUSINESS · ASSIGNMENT #2</div>
-          <div class="login-title">소비·신용 진단 상담</div>
-          <div class="login-sub">수업 제출용 웹앱입니다. 안내받은 접속 비밀번호를 입력해 주세요.</div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-    password = st.text_input("접속 비밀번호", type="password", label_visibility="collapsed", placeholder="접속 비밀번호")
-    if st.button("들어가기", use_container_width=True):
-        if password == PASSWORD:
-            st.session_state.auth = True
-            reset_state()
-            st.rerun()
-        else:
-            st.error("비밀번호가 맞지 않습니다.")
-    st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown('<div style="height:13vh"></div>', unsafe_allow_html=True)
+    _, middle, _ = st.columns([1, 1.6, 1])
+    with middle:
+        st.markdown(
+            """
+            <div class="login-card">
+              <div class="login-kicker">AI BUSINESS · ASSIGNMENT #2</div>
+              <div class="login-title">소비·신용 진단 상담</div>
+              <div class="login-sub">수업 제출용 웹앱입니다. 안내받은 접속 비밀번호를 입력해 주세요.</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        password = st.text_input(
+            "접속 비밀번호", type="password", label_visibility="collapsed", placeholder="접속 비밀번호"
+        )
+        if st.button("들어가기", use_container_width=True):
+            if password == PASSWORD:
+                st.session_state.auth = True
+                reset_state()
+                st.rerun()
+            else:
+                st.error("비밀번호가 맞지 않습니다.")
+        st.markdown(
+            '<div class="login-foot">AI Business (2026-2) · 경영학과 최승연 (202143316)</div>',
+            unsafe_allow_html=True,
+        )
 
 
 def main():
@@ -420,6 +427,9 @@ def main():
         .app-title { color: #FFFFFF; font-size: 22px; font-weight: 700; margin-top: 6px; }
         .app-sub { color: #A9BDD1; font-size: 12.5px; margin-top: 5px; }
         .app-foot { color: #5C6B7A; font-size: 11.5px; margin-top: 26px; padding-top: 12px; border-top: 1px solid #DDE5EC; }
+        .stButton > button { background: #10243E; color: #FFFFFF; border: 1px solid #10243E; font-weight: 600; }
+        .stButton > button:hover { background: #1F8A70; border-color: #1F8A70; color: #FFFFFF; }
+        .stButton > button:focus { background: #10243E; color: #FFFFFF; border-color: #10243E; box-shadow: none; }
         </style>
         """,
         unsafe_allow_html=True,
